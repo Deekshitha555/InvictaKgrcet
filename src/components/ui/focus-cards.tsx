@@ -3,6 +3,14 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+
+type CardType = {
+  title: string;
+  src: string;
+  designation: string;
+  contact: string;
+};
+
 export const Card = React.memo(
   ({
     card,
@@ -10,7 +18,7 @@ export const Card = React.memo(
     hovered,
     setHovered,
   }: {
-    card: any;
+    card: CardType; // Specify the type here
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
@@ -35,7 +43,7 @@ export const Card = React.memo(
           src={card.src}
           alt={card.title}
           fill
-           className="object-contain absolute inset-0 object-top" // Focuses on the top portion
+          className="object-contain absolute inset-0 object-top" // Focuses on the top portion
         />
         <div
           className={cn(
@@ -60,31 +68,26 @@ export const Card = React.memo(
 
 Card.displayName = "Card";
 
-type Card = {
-  title: string;
-  src: string;
-  designation: string;
-  contact: string;
-};
-
-export function FocusCards({ cards }: { cards: Card[] }) {
+export function FocusCards({ cards }: { cards: CardType[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <>
-      <div className="max-w-[100vw] md:max-w-2xl lg:max-w-[60vw] mt-20 mb-10  ">
-        <motion.h1 initial={{
-          opacity: 0,
-          y: 0,
-        }}
+      <div className="max-w-[100vw] md:max-w-2xl lg:max-w-[60vw] mt-20 mb-10">
+        <motion.h1
+          initial={{
+            opacity: 0,
+            y: 0,
+          }}
           animate={{
             opacity: 1,
-            y: 0
+            y: 0,
           }}
           transition={{
             duration: 3,
           }}
-          className="md:text-4xl md:ml-60 text-3xl lg:text-4xl font-bold text-yellow-500 z-20 text-center">
+          className="md:text-4xl md:ml-60 text-3xl lg:text-4xl font-bold text-yellow-500 z-20 text-center"
+        >
           Event Coordinators
         </motion.h1>
       </div>
@@ -101,5 +104,4 @@ export function FocusCards({ cards }: { cards: Card[] }) {
       </div>
     </>
   );
-
 }

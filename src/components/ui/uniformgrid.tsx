@@ -7,7 +7,7 @@ import Link from "next/link";
 type Event = {
   title?: string;
   description?: string;
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
   img?: string;
   imgAlt?: string;
   link?: string;
