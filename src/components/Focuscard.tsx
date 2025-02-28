@@ -10,7 +10,7 @@ export function FocusCardsDemo() {
     },
     {
       title: "Challa Sai Charan",
-      src: "/images/testimonials/Charan.jpg",
+      src: "/images/testimonials/charan.jpg",
       designation:"Vice President",
       contact:"7993605410"
     },
